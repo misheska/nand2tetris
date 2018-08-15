@@ -15,4 +15,44 @@ CHIP Mux {
 
     PARTS:
     // Put your code here:
+    Not(a=sel, b=sel, out=notsel);
+    Nand(a=a, b=notsel, out=x);
+    Nand(a=sel, b=b, out=y);
+    Nand(a=x, b=y, out=out);
 }
+
+/**
+ *
+ *  Karnaugh Map
+ *  \ab
+ *   \
+ * sel\ 00 01 11 10
+ *     +--+--+--+--+
+ *    0|  |  | 1| 1|
+ *     +--+--+--+--+
+ *    1|  | 1| 1|  |
+ *     +--+--+--+--+
+ *
+ *     y = (a * sel') + (b * sel)
+ *     y = OR((a * sel'), (b * sel))
+ *
+ *     Note: OR(a, b) = NAND(NOT(a), NOT(b))
+ *           NOT(in) = NAND(in, in)
+ *           AND(a, b) = NOT(NAND(a, b))
+ *
+ *     y = NAND(NOT(a * sel'), NOT(b * sel))
+ *       = NAND(NOT(AND(a, sel')), NOT(AND(b, sel)))
+ *       = NAND(NOT(NOT(NAND(a, sel'))), NOT(NOT(NAND(b, sel))))
+ *       = NAND(NAND(a, sel'), NAND(b, sel))
+ *
+ *  Mux
+ *  a  b sel out
+ *  0  0  0   0
+ *  0  1  0   0
+ *  1  0  0   1
+ *  1  1  0   1
+ *  0  0  1   0
+ *  0  1  1   1
+ *  1  0  1   0
+ *  1  1  1   1
+ */
