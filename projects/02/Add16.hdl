@@ -15,3 +15,9 @@ CHIP Add16 {
     PARTS:
    // Put you code here:
 }
+
+/*
+ *  An n-bit adder can be built from n full-adder chips
+ *  The carry bit is "piped" from right to left
+ *  The MSB carry bit is ignored
+ */

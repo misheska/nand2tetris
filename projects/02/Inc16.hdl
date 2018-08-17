@@ -15,3 +15,7 @@ CHIP Inc16 {
     PARTS:
    // Put you code here:
 }
+
+/*
+ *  The single-bit 0 and 1 values are represented in HDL as false and true.
+ */

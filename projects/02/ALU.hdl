@@ -44,3 +44,11 @@ CHIP ALU {
     PARTS:
    // Put you code here:
 }
+
+/*
+ *  Implementation tips
+ *  -------------------
+ *  Building blocks: Add16, and various chips built in Project 1
+ *  Can be built with less than 20 lines of HDL code
+ */
+
